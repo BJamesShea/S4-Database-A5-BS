@@ -18,6 +18,10 @@ public class Animal {
         return arrivalTime;
     }
 
+    public int getArrivalTime() {
+        return arrivalTime;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
