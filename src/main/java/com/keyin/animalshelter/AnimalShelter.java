@@ -25,20 +25,14 @@ public class AnimalShelter {
     }
 
     public Animal dequeueAny() {
-        if (dogQueue.isEmpty() && catQueue.isEmpty()) {
-            return null;
-        } else if (dogQueue.isEmpty()) {
-            return catQueue.poll();
-        } else if (catQueue.isEmpty()) {
-            return dogQueue.poll();
-        }
+        if (dogQueue.isEmpty() && catQueue.isEmpty()) return null;
+        if (dogQueue.isEmpty()) return catQueue.poll();
+        if (catQueue.isEmpty()) return dogQueue.poll();
 
+        Dog oldestDog = dogQueue.peek();
+        Cat oldestCat = catQueue.peek();
 
-        if (dogQueue.peek().getArrivalTime() < catQueue.peek().getArrivalTime()) {
-            return dogQueue.poll();
-        } else {
-            return catQueue.poll();
-        }
+        return (oldestDog.getArrivalTime() < oldestCat.getArrivalTime()) ? dogQueue.poll() : catQueue.poll();
     }
 
     public Dog dequeueDog() {
